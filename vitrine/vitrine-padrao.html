@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base target="_parent">
+    <style></style>
+</head>
+<body>
+
+<!-- Caso não tenha produtos, não apresenta o conteúdo -->
+{% if produtos %}
+<section id="tad-target-vitrine-inteligente">
+{% for produto in produtos %}
+<div itemscope itemtype="http://schema.org/Product">
+  <a href="{{ produto.url }}?utm_source=tadtarget&utm_medium=vitrine-padrao&utm_term=sugestoes&utm_content=vitrine-one&utm_campaign=sugestoes-cliente">
+      <span itemprop="name">{{ produto.descricao }}</span>
+      <img src="{{ produto.image_url }}" alt='{{ produto.descricao }}' />
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <!--price is 1000, a number, with locale-specific thousands separator
+        and decimal mark, and the $ character is marked up with the
+        machine-readable code "USD" -->
+        <span itemprop="priceCurrency" content="BRL">R$</span><span
+              itemprop="price" content="{{ produto.preco }}">{{ produto.preco | format_currency }}</span>
+        <link itemprop="availability" href="http://schema.org/InStock" />
+      </div>
+      {% if produto.descricao %}
+      <span itemprop="description">{{ produto.descricao }}</span>
+      {% endif %}
+  </a>
+</div>
+{% endfor %}
+</section>
+{% endif %}
+<!--</body>-->
+<!--</html>-->
