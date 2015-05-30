@@ -1,4 +1,4 @@
-<!doctype html>
+                                                                                                <!doctype html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -28,7 +28,7 @@ h6            { font-size:11px; font-weight:bold; }
 
 /* Forms */
 form          { display:inline; }
-fieldset      { border:0; }
+fieldset      { border:0px; }
 legend        { display:none; }
 
 /* Table */
@@ -77,7 +77,7 @@ ul,ol         { list-style:none; }
 .category-title { border:0; margin:0 0 7px; }
 .category-image { width:100%; overflow:hidden; margin:0 0 10px; text-align:center; }
 .category-image img {}
-.category-description { margin:0 0 10px; }
+.category-description { margin:0 0 10px; text-align:left;}
 .category-products { padding-bottom:5px}
 
 .category-products .head { position:relative; padding:5px 15px; background: #7c76b7;
@@ -90,12 +90,12 @@ background: -ms-linear-gradient(top, #7c76b7 0%,#483f99 100%);
 background: linear-gradient(to bottom, #7c76b7 0%,#483f99 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c76b7', endColorstr='#483f99',GradientType=0 ); -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;
 behavior: url(http://www.meusalao.com.br/skin/frontend/meusalao/2012/css/PIE.htc);}
-.category-products .head h4 { color:#FFF; font-family: 'LatoLightRegular'; font-weight:normal; font-size:20px; margin:0}
+.category-products .head h4 { color:#FFF; font-family: 'LatoLightRegular'; font-weight:normal; font-size:20px; margin:0; text-align:left;}
 
 /* View Type: Grid */
 .products-grid {  position:relative; }
 .products-grid.last { border-bottom:0; }
-.products-grid li.item { float:left; width:208px; padding:10px 16px; position:relative;}
+.products-grid li.item { float:left; width:208px; padding:10px 16px; position:relative; text-align:left; word-wrap: break-word; text-overflow: ellipsis; }
 .products-grid .product-image { display:block; width:190px; height:190px; padding:8px; margin:0 0 5px; text-align:center; border:1px solid #CCC }
 .products-grid .product-name { margin:0 0 5px; font-weight:bold; font-size:12px; color:#666; border-bottom:1px solid #666; padding-bottom:5px }
 .products-grid .product-name a { color:#666; }
@@ -105,7 +105,7 @@ behavior: url(http://www.meusalao.com.br/skin/frontend/meusalao/2012/css/PIE.htc
 .products-grid li.item .logomarca { width:190px; height:55px; text-align:left; margin:0}
 .products-grid li.item .logomarca img { margin:0 !important}
 .products-grid li.item .qtde { color:#6561AB; font-size:16px; line-height:12px; font-weight:bold}
-.products-grid li.item .descri { width:75%; margin:3px 0}
+.products-grid li.item .descri { width:75%; margin:3px 0; height: 32px; overflow:hidden;}
 .products-grid li.item .descri a { color:#919396; font-size:11px; font-weight:normal;}
 .category-products .products-grid li.item .ratings a { display:none}
 
@@ -141,8 +141,8 @@ behavior: url(http://www.meusalao.com.br/skin/frontend/meusalao/2012/css/PIE.htc
 
 /* Regular price */
 .regular-price { color:#6561AB; }
-.regular-price span { font-weight:normal; font-size:14px; color:#6561AB; }
-.regular-price .price { font-weight:normal; font-size:14px; color:#6561AB; }
+.regular-price span { font-weight:normal; font-size:16px; color:#6561AB; }
+.regular-price .price { font-weight:normal; font-size:16px; color:#6561AB; }
 .block .regular-price,
 .block .regular-price .price { color:#2f2f2f; }
 
@@ -162,13 +162,14 @@ behavior: url(http://www.meusalao.com.br/skin/frontend/meusalao/2012/css/PIE.htc
 <!-- Caso não tenha produtos, não apresenta o conteúdo -->
 {% if produtos %}
 <div class="category-products">
-    <div class="head"><h4>Destaques</h4></div>
+    <div class="head"><h4>Produtos selecionados para você!</h4></div>
+
 
     <ul class="products-grid last odd">
         {% for produto in produtos %}
         <li class="item first">
             <a href="{{ produto.url }}?utm_source=tadtarget&utm_medium=vitrine-padrao&utm_term=sugestoes&utm_content=vitrine-one&utm_campaign=sugestoes-cliente"
-               title="{{ produto.nome }}"
+               title="Clique para ver os detalhes do {{ produto.nome }}"
                class="product-image"><img
                     src="{{ produto.image_url }}"
                     width="190" height="190"
@@ -178,10 +179,10 @@ behavior: url(http://www.meusalao.com.br/skin/frontend/meusalao/2012/css/PIE.htc
                     href="http://www.meusalao.com.br/schwarzkopf-bonacure-q10-time-restore-conditioner-condicionador-200ml.html"
                     title="{{ produto.nome }}">{{ produto.nome }}</a></h2>
 
-            {% if produto.descricao %}
+            {% if produto.desc %}
             <h5 class="descri"><a
                     href="http://www.meusalao.com.br/schwarzkopf-bonacure-q10-time-restore-conditioner-condicionador-200ml.html"
-                    title="">{{ produto.descricao }}</a></h5>
+                    title="Clique para ver os detalhes deste produto">{{ produto.desc }}</a></h5>
             {% endif %}
             <div class="price-box">
                 <p class="special-price">
