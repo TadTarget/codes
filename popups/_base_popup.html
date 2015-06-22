@@ -1,4 +1,4 @@
- <FORM class="formCadastroEmail" action="/popup" method="post">
+                                 <FORM class="formCadastroEmail" action="/popup" method="post">
         <input type="hidden" name="loja_id" value="{{loja_id}}" />
         <input type="hidden" name="popup_id" value="{{popup_id}}" />
         <input type="hidden" name="user_id" value="{{user_id}}" />
@@ -34,10 +34,12 @@
     <DIV id="form-submit" class="btn-confirma clearfix submit">
          <INPUT id="bt-submit" type="submit" name="bt-submit">
          <A class="bClose close1" href="">
-            <IMG alt=Fechar src="//static.sepha.com.br/skin/sepha/images/floater/retencao/btn_fechar.jpg">
+            <IMG alt=Fechar src="">
         </A>
     </DIV>
     <P class="aviso-nv">Ao clicar em "Quero meu desconto" você aceitará nossa <A style="COLOR: #000"
-                                                                               onclick="AbrirJanela('http://www.sepha.com.br/portal/popup-privacidade.php', '1', 600, 560, 'regulamento')"
+                                                                               onclick="window.open('privacidade.html', '1', 600, 560, 'regulamento')"
                                                                                href="javascript:void(0);">Política de
         Privacidade</A> e autoriza o envio de campanhas promocionais para seu endereço eletrônico</P></FORM>
+
+                            

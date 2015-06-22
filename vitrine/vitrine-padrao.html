@@ -57,10 +57,9 @@
     </style>
 </head>
 <body>
-
 <!-- Caso não tenha produtos, não apresenta o conteúdo -->
 {% if produtos %}
-<section id="tad-target-vitrine-inteligente">
+<section id="tadtarget-produtos">
 <ol id="tadtarget-carrousel" class="tadtarget-vitrine-padrao">
 {% for produto in produtos %}
 <li class="vitrine-item">
@@ -90,6 +89,19 @@
 {% endfor %}
 </ol>
 </section>
+<script>
+    var message = {
+    width: 'desiredWidth',
+    height: 'desiredHeight'
+};
+    if (typeof JSON === 'object' && typeof JSON.parse === 'function') {
+        window.parent.postMessage(JSON.stringify(message),'*');    
+    }else {
+        message = '{"height": 0}'
+        window.parent.postMessage(message, '*')
+    }
+    
+</script>
 {% endif %}
 <!--</body>-->
 <!--</html>-->
