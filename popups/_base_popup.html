@@ -1,45 +1,95 @@
-                                 <FORM class="formCadastroEmail" action="/popup" method="post">
+<style>
+    form {
+        border:none;
+        font: 1em arial;
+    }
+
+    #container-popup h4 {
+        font: 1.2em arial black;
+        text-transform: uppercase;
+        margin:10px;
+        text-align: center;
+        width: 100%;
+        float: left;
+    }
+
+    .alerta-validacao {font:11px arial red;}
+    .bt-submit {}
+    .aviso-nv {font:12px arial;}
+
+.form-control {
+    margin:10px 0; display: block; height: 34px; padding: 6px 12px; font-size: 14px; line-height: 1.42857143;
+    color: #555; background-color: #fff; background-image: none; border: 1px solid #ccc; border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075); box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+.form-control:focus {
+    border-color: #66afe9; outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+.form-control::-moz-placeholder {color: #999; opacity: 1}
+.form-control:-ms-input-placeholder { color: #999}
+.form-control::-webkit-input-placeholder {color: #999}
+.form-control[disabled],.form-control[readonly],fieldset[disabled] .form-control { background-color: #eee; opacity: 1}
+.form-control[disabled],fieldset[disabled] .form-control {cursor: not-allowed}
+textarea.form-control {height: auto}
+input[type=search] {-webkit-appearance: none}
+
+</style>
+
+<div id="container-popup">
+<h4>Ganhe agora <span>bônus de 30%</span> de desconto extra!</h4>
+<p class="mensagem">Cadastre-se para receber conteúdo e promoções exclusivas.</p>
+
+<form class="form-horizontal formCadastroEmail" action="/popup" method="post">
         <input type="hidden" name="loja_id" value="{{loja_id}}" />
         <input type="hidden" name="popup_id" value="{{popup_id}}" />
         <input type="hidden" name="user_id" value="{{user_id}}" />
-        <input type="hidden" name="lista" value="{{lista}}" />
+        <input type="hidden" name="lista" value="{{lista}}" />     
+  
+  <div class="form-group">
+    <label for="nome" class="col-sm-2 control-label">Nome</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="nome" name="nome" placeholder="Nome">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+    </div>
+  </div>
+  <div class="radio">
+      <label>
+        <input type="radio" name="sexo" id="optionsRadios1" value="F">
+        Feminino
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="sexo" id="optionsRadios2" value="M">
+        Masculino
+      </label>
+   </div>
 
-    <DIV class="tadtarget-form-newsletter">
-        <DIV class="nome-field">
-            <DIV class="recuo-form">
-                <LABEL class="label-floater" for="field1">Nome</LABEL>
-            </DIV>
-            <INPUT id="nome" type="text" name="nome">
-        </DIV>
+   <div class="alerta-validacao">
+        <span>Preencha todos os campos</span>
+    </div>
 
-        <DIV class="email-field">
-            <DIV class="recuo-form"><LABEL class="label-floater" for="field3">E-mail</LABEL></DIV>
-            <INPUT id="email-CadastroEmail" type="text" name="email"></DIV>
-        <DIV class="sexo-field radio-group">
-            <DIV class="option clearfix">
-            <LABEL class="label-floater">
-                <INPUT id="sexo" value="F" type="radio" name="sexo"> 
-                <SPAN class="option-title">Feminino</SPAN>
-            </LABEL></DIV>
-            <DIV class="option clearfix">
-                <LABEL class="label-floater"><INPUT id="sexo" value="M" type="radio" name="sexo">
-                    <SPAN class="option-title">Masculino</SPAN>
-                </LABEL>
-            </DIV>
-        </DIV>
-    </DIV>
-    <DIV class="alerta-validacao">
-        <IMG src=""> <SPAN>Preencha todos os campos</SPAN>
-    </DIV>
-    <DIV id="form-submit" class="btn-confirma clearfix submit">
-         <INPUT id="bt-submit" type="submit" name="bt-submit">
-         <A class="bClose close1" href="">
-            <IMG alt=Fechar src="">
-        </A>
-    </DIV>
-    <P class="aviso-nv">Ao clicar em "Quero meu desconto" você aceitará nossa <A style="COLOR: #000"
-                                                                               onclick="window.open('privacidade.html', '1', 600, 560, 'regulamento')"
-                                                                               href="javascript:void(0);">Política de
-        Privacidade</A> e autoriza o envio de campanhas promocionais para seu endereço eletrônico</P></FORM>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" name="bt-submit" class="btn btn-default">Ganhar Bônus</button>
+    </div>
+  </div>
+</form>
 
+<p class="aviso-nv">Ao clicar em "Ganhar Bônus" você aceitará nossa <a onclick="window.open('privacidade', '1', 600, 560, 'regulamento')"
+                                                                             href="javascript:void(0);">Política de
+        Privacidade</a> e autoriza o envio de campanhas promocionais para seu endereço eletrônico</p>
+</div>
+                            
                             
