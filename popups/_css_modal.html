@@ -1,0 +1,59 @@
+<style>
+      #tadtarget-popapito {
+         overflow: hidden;
+         position: fixed;
+         left: 0px;
+         top: 0px;
+         width:100%;
+         height:100%;
+         text-align:center;
+         z-index: 1000;
+      }
+
+      #tadtarget-overlay {
+         position: absolute;
+         left: 0px;
+         top: 0px;
+         width:100%;
+         height:100%;
+         text-align:center;
+         z-index: 1000;
+         background: #000;
+         opacity: .6;
+      }
+
+      #tadtarget-overlay { background:transparent\9; }
+
+      #tadtarget-popups iframe {
+          width: 700px!important;
+          height: 450px!important;
+          border:0;
+      }
+
+      #tadtarget-divchild {
+          position: absolute;
+          width: 700px;
+          height: 450px;
+          left: 50%;
+          margin-left: -25%;
+          top: 100px;
+          background:transparent url(http://www.meusalao.com.br/media/wysiwyg/pop-up-cadastro.png) no-repeat 0 0;
+          border:1px solid #000;
+          text-align:center;
+          z-index:10000;
+          display:none;
+      }
+
+      #tadtarget-icone-fechar {
+          display: block;
+          position: absolute;
+          right: -5px;
+          top: -10px;
+          border: 1px solid black;
+          width: 20px;
+          border-radius: 11px;
+          background-color: red;
+          font-weight: bold;
+          color: white;
+      }
+  </style>
