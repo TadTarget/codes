@@ -1,4 +1,5 @@
 <style>
+    body {background: transparent;} /*ie8 hack for iframe transparency*/
     form {
   font: 1em arial;
   width: 618px;
@@ -25,6 +26,7 @@
 }
 
     .bt-cn {
+        display: block;
         width: 111px;
         position: absolute;
         height: 29px;
@@ -32,6 +34,7 @@
         left: 267px;
     }
     button.btn.btn-default {
+      display: block;
       width: 111px;
       height: 29px;
       background: none;
@@ -54,9 +57,13 @@
 #info-pessoa {
   float: left;
   width: 308px;
+  width: 385px\9;
   height: 60px;
   padding: 16px 0 0 78px;
 }
+
+#info-pessoa .form-group {width:100%\9;float:left\9;}
+
 
 #escolha-sexo {
   float: left;
@@ -87,14 +94,23 @@
   text-indent: -1000em;
 }
 
+ #nome, #email {
+  width:306px\9;
+  height: 27px\9;
+  margin-bottom:2px\9;
+  border:none\9;
+ }
+
 .form-group input[type=text], .form-group input[type=email] {
+  display:block;
+  float:left;
   width:308px;
+  width:280px !important\9;
   padding:0 9px;
   height: 27px;
   border:none;
   margin-bottom:4px;
-}
-.form-control {
+  display:block;
 }
 
 .form-control:focus {
@@ -114,8 +130,8 @@ input[type=search] {-webkit-appearance: none}
 <div id="container-popup">
 <h4>Ganhe agora <span>bônus de 30%</span> de desconto extra!</h4>
 <p class="mensagem">Cadastre-se para receber conteúdo e promoções exclusivas.</p>
-
-<form class="form-horizontal formCadastroEmail" action="/popup" method="post">
+<meta http-equiv="X-UA-Compatible" content="IE=100" >
+<form class="form-horizontal formCadastroEmail" action="/popup" method="post" onsubmit="return validarCampos();" id="formCadastroEmail">
         <input type="hidden" name="loja_id" value="{{loja_id}}" />
         <input type="hidden" name="popup_id" value="{{popup_id}}" />
         <input type="hidden" name="user_id" value="{{user_id}}" />
@@ -166,6 +182,40 @@ input[type=search] {-webkit-appearance: none}
 </div>
 
 <script>
+    function validarCampos(){
+      var nome = document.forms["formCadastroEmail"]["nome"].value;
+      var email = document.forms["formCadastroEmail"]["email"].value;
+      var radios = document.getElementsByName('sexo');
+      var sexo = false;
+      var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      
+      if (nome == null || nome == "") {
+        alert("Preencha o campo Nome");
+        return false;
+      }
+
+      
+      if (email == null || email == "" || re.test(email) == false ) {
+        alert("Prencha o campo e-mail com o seu e-mail");
+        return false;
+      }
+
+      
+
+      for (var i = 0, length = radios.length; i < length; i++) {
+          if (radios[i].checked) {
+              sexo = true;
+          }
+      }
+
+      if(sexo == false){
+        alert("Escolha o sexo");
+        return false; 
+      }
+
+      return true;
+    }
+
     var message = {
       "contentLoaded": 'contentLoaded'
     };

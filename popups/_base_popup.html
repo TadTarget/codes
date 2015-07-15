@@ -1,8 +1,10 @@
 <style>
+    body {background:transparent} //hack for iFrame ie8
     form {
         border:none;
         font: 1em arial;
     }
+
 
     #container-popup h4 {
         font: 1.2em arial black;
@@ -45,7 +47,7 @@ input[type=search] {-webkit-appearance: none}
 <h4>Ganhe agora <span>bônus de 30%</span> de desconto extra!</h4>
 <p class="mensagem">Cadastre-se para receber conteúdo e promoções exclusivas.</p>
 
-<form class="form-horizontal formCadastroEmail" action="/popup" method="post">
+<form class="form-horizontal formCadastroEmail" action="/popup" method="post" onsubmit="return validarCampos();">
         <input type="hidden" name="loja_id" value="{{loja_id}}" />
         <input type="hidden" name="popup_id" value="{{popup_id}}" />
         <input type="hidden" name="user_id" value="{{user_id}}" />
@@ -96,6 +98,11 @@ input[type=search] {-webkit-appearance: none}
 </div>
 
 <script>
+    function validarCampos(){
+      console.log("campos");
+      return true;
+    }
+
     var message = {
       "contentLoaded": 'contentLoaded'
     };
