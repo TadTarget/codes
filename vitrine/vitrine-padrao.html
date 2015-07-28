@@ -89,19 +89,18 @@
 {% endfor %}
 </ol>
 </section>
+{% endif %}
 <script>
     var message = {
-    width: 'desiredWidth',
-    height: 'desiredHeight'
+    width: '0',
+    height: '0'
 };
     if (typeof JSON === 'object' && typeof JSON.parse === 'function') {
         window.parent.postMessage(JSON.stringify(message),'*');    
     }else {
-        message = '{"height": 0}'
         window.parent.postMessage(message, '*')
     }
     
 </script>
-{% endif %}
 <!--</body>-->
 <!--</html>-->
