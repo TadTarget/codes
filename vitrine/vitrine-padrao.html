@@ -59,6 +59,12 @@
 <body>
 <!-- Caso não tenha produtos, não apresenta o conteúdo -->
 {% if produtos %}
+<script>
+    var message = {
+    width: '0',
+    height: '0'
+};
+</script>
 <section id="tadtarget-produtos">
 <ol id="tadtarget-carrousel" class="tadtarget-vitrine-padrao">
 {% for produto in produtos %}
@@ -91,16 +97,16 @@
 </section>
 {% endif %}
 <script>
-    var message = {
-    width: '0',
-    height: '0'
-};
+     if(typeof message !== 'undefined') {
+      message.height = 1
+  }else {
+       message = ''
+  }
     if (typeof JSON === 'object' && typeof JSON.parse === 'function') {
+        message.height = 1
         window.parent.postMessage(JSON.stringify(message),'*');    
     }else {
         window.parent.postMessage(message, '*')
     }
     
 </script>
-<!--</body>-->
-<!--</html>-->

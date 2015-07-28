@@ -161,6 +161,12 @@ behavior: url(http://www.meusalao.com.br/skin/frontend/meusalao/2012/css/PIE.htc
 
 <!-- Caso não tenha produtos, não apresenta o conteúdo -->
 {% if produtos %}
+<script>
+    var message = {
+    width: '0',
+    height: '0'
+};
+</script>
 <div class="category-products" id="tadtarget-produtos">
     <div class="head"><h4>Produtos selecionados para você!</h4></div>
 
@@ -196,14 +202,15 @@ behavior: url(http://www.meusalao.com.br/skin/frontend/meusalao/2012/css/PIE.htc
 </div>
 {% endif %}
 <script>
-    var message = {
-    width: '0',
-    height: '0'
-};
+     if(typeof message !== 'undefined') {
+      message.height = 1
+  }else {
+       message = ''
+  }
     if (typeof JSON === 'object' && typeof JSON.parse === 'function') {
+        message.height = 1
         window.parent.postMessage(JSON.stringify(message),'*');    
     }else {
         window.parent.postMessage(message, '*')
-    }
-    
+    }    
 </script>
