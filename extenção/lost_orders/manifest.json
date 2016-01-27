@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "Lost Orders by TadGaudio",
+  "description": "Esta extenção deve ser utilizada na página de Erros do Hub Bis2Bis para Marketplace",
+  "version": "1.0",
+
+  "icons": {
+    "128": "128.png"
+    },
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [ {
+      "matches": [ "http://*/*", "https://*/*"],
+      "js": ["content.js"]
+    }],
+  "permissions": ["activeTab"]
+}
