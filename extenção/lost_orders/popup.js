@@ -50,6 +50,10 @@ function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
 
+function renderHTML(statusText) {
+  document.getElementById('result').innerHTML = statusText;
+}
+
 function getPedidos(domCtx){
 /*
    autor: Tadeu Luis P. Gaudio
@@ -86,10 +90,11 @@ function getPedidos(domCtx){
 
     if(pedidos.length>0){
             for(var j=0; j<pedidos.length;j++){
-                _pedidos += pedidos[j]+'\n'
+                _pedidos +=  '<a target="_blank" href="'+pedidos[j]+'">'+pedidos[j]+'</a><br>'
             }
 
-            renderStatus(_pedidos)
+            renderStatus("Total de Pedidos Perdidos: "+pedidos.length)
+            renderHTML(_pedidos)
     }
 
 
