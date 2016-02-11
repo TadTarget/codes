@@ -3,7 +3,7 @@
 
   "name": "Lost Orders by TadGaudio",
   "description": "Esta extenção deve ser utilizada na página de Erros do Hub Bis2Bis para Marketplace",
-  "version": "1.0",
+  "version": "1.1",
 
   "icons": {
     "128": "128.png"
