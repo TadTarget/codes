@@ -90,13 +90,19 @@ function getPedidos(domCtx){
 
     if(pedidos.length>0){
             for(var j=0; j<pedidos.length;j++){
-                _pedidos +=  '<a target="_blank" href="'+pedidos[j]+'">'+pedidos[j]+'</a><br>'
+                _pedidos +=  '<a target="_blank" class="link" href="'+pedidos[j]+'">'+pedidos[j]+'</a><br>'
             }
 
             renderStatus("Total de Pedidos Perdidos: "+pedidos.length)
             renderHTML(_pedidos)
     }
 
+    var link = jQuery('.link');
+    //abaixo previne de ao clicar em algum link gerado, que o popup se feche e que perca o foco da extenção:
+    link.on('click', function(e) {
+        e.preventDefault();e.stopPropagation();
+        chrome.tabs.create({url: $(this).attr('href'), active: false});
+    });
 
     return _pedidos;
 }
@@ -116,4 +122,6 @@ document.addEventListener('DOMContentLoaded', function(tab) {
     //texto = getPedidos()
     //renderStatus(texto)
   });
+
+
 });
