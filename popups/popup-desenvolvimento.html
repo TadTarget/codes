@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt_Br">
+<head>
+    <meta charset="UTF-8">
+    <title>Criador de PopUps Tad Target</title>
+</head>
+ <style>
+     /* ATENÇÂO:
+        O Código abaixo é necessário para o correto funcionamento dos PopUPs.
+        Caso deseje alterar este, mantenha sempre as classes e ids
+      */
+      #tadtarget-popapito {
+         overflow: hidden;
+         position: fixed;
+         left: 0px;
+         top: 0px;
+         width:100%;
+         height:100%;
+         text-align:center;
+         z-index: 1000;
+      }
+
+      #tadtarget-overlay {
+         position: absolute;
+         left: 0px;
+         top: 0px;
+         width:100%;
+         height:100%;
+         text-align:center;
+         z-index: 1000;
+         background: #000;
+         opacity: .6;
+      }
+
+      #tadtarget-overlay { background:transparent\9; }
+
+      #tadtarget-popups iframe {
+          width: 700px!important;
+          height: 350px!important;
+          border:0;
+      }
+
+      #tadtarget-divchild {
+          position: absolute;
+          width: 700px;
+          height: 450px;
+          left: 50%;
+          margin-left: -25%;
+          top: 100px;
+          background:transparent url(http://www.meusalao.com.br/media/wysiwyg/black-friday-2015-cupom.png) no-repeat 0 0;
+          text-align:center;
+          z-index:10000;
+          xdisplay:none;
+      }
+
+      #tadtarget-icone-fechar {
+          display: block;
+          position: absolute;
+          right: -5px;
+          top: -10px;
+          border: 1px solid black;
+          width: 20px;
+          border-radius: 11px;
+          background-color: red;
+          font-weight: bold;
+          color: white;
+      }
+  </style>
+<body>
+<h1>Espaço de criação de PopUps.</h1>
+<p>Sinta-se livre para criar os popups aqui. Para lhe ajudar hospedamos códigos que podem ser usados como base para lhe auxiliar na criação dos seus PopUps:</p>
+<ul>
+    <li><a href="https://github.com/TadTarget/codes/blob/master/popups/_base_popup.html">HTML Base do PopUp</a></li>
+    <li><a href="https://github.com/TadTarget/codes/blob/master/popups/_css_modal.html">CSS Modal PopUp</a></li>
+</ul>
+<p>Insira o código HTML copiado para a Base PopUp dentro deste HTML</p>
+<a href="www.tadtarget.com">Tad Target</a>
+<hr/>
+
+<div id="tadtarget-popapito">
+    <div id="tadtarget-overlay"></div>
+    <div id="tadtarget-divchild">
+        <div id="tadtarget-overlay-conteudo"><span id="tadtarget-icone-fechar">x</span>
+
+            <div id="tadtarget-popups">
+                <!--- inserir Base do PopUP abaixo: -->
+
+                <div id="container-popup">
+                    <h4>Ganhe agora <span>bônus de 30%</span> de desconto extra!</h4>
+                </div>
+
+                <!-- fim do seu código para o popups -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function createCookie(name, value, exdays) {
+        var expires;
+        var date = new Date();
+        if (exdays) {
+            date.setDate(date.getDate() + exdays);
+            expires = "; expires=" + date.toUTCString();
+        }
+        else {
+            //expira em 20 min
+            expires = date.getTime() + (60 * 20);
+        }
+        //então aqui tem que adicionar o domínio senão o cookie não funciona.
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function getCookie(c_name) {
+        if (document.cookie.length > 0) {
+            c_start = document.cookie.indexOf(c_name + "=");
+            if (c_start != -1) {
+                c_start = c_start + c_name.length + 1;
+                c_end = document.cookie.indexOf(";", c_start);
+                if (c_end == -1) {
+                    c_end = document.cookie.length;
+                }
+                return unescape(document.cookie.substring(c_start, c_end));
+            }
+        }
+
+        return "";
+    }
+
+
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+
+    function addEvent(obj, evt, fn) {
+        if (obj.addEventListener) {
+            obj.addEventListener(evt, fn, false);
+        }
+        else if (obj.attachEvent) {
+            obj.attachEvent("on" + evt, fn);
+        }
+    }
+
+    var counter = getCookie('pc');
+
+    if(counter == undefined || counter == "" ) {
+        createCookie('pc', 1, 10);
+        counter = 1;
+    }
+
+</script>
+
+</body>
+</html>
+
+
